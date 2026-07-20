@@ -1,25 +1,33 @@
 # Himan-D
-### Artificial Intelligence Researcher | Objective-Driven Machine Intelligence
+### Artificial Intelligence Researcher | Objective-Driven Models & Applied Optimization
 
-> *"We're not going to get to human-level intelligence by simply scaling up LLMs."*
+> *"Autoregressive generation is just spicy autocomplete. Change my mind."*
 
 ---
 
 ## Abstract
 
-The current trajectory of autoregressive language models provides an off-ramp, rather than a highway, toward Advanced Machine Intelligence (AMI). My work is deeply aligned with the principles of **Joint Embedding Predictive Architectures (JEPA)** and **World Models**. True autonomy requires equipping machines with the ability to learn, remember, reason, and plan by predicting abstract, continuous states of the world rather than generating raw sensory inputs or discrete tokens.
+The current trajectory of scaling Large Language Models provides an off-ramp, rather than a highway, toward Advanced Machine Intelligence (AMI). Let $\mathcal{A}_N$ be an autoregressive model scaled over $N$ parameters. I propose that $\lim_{N \to \infty} P(\mathcal{A}_N \text{ achieves true autonomy}) \approx 0$. 
+
+My work is deeply aligned with **Joint Embedding Predictive Architectures (JEPA)** and **World Models**. True autonomy requires equipping machines with the ability to learn, remember, reason, and plan—preferably before the heat death of the universe.
 
 ## Research Focus
 
 - **Objective-Driven AI:** Shifting from ungrounded next-token prediction to goal-oriented state space prediction.
-- **Self-Supervised Learning (SSL):** Leveraging Energy-Based Models (EBMs) for robust representation learning without relying on massive human annotation.
-- **World Models:** Developing architectures that can simulate physical reality, enabling forward-planning and common-sense reasoning.
+- **Self-Supervised Learning (SSL):** Leveraging Energy-Based Models (EBMs) for robust representation learning, primarily because manual human annotation is a bottleneck I refuse to participate in.
+- **Applied Coffee Optimization:** Theorem 1 states there exists an optimal learning rate $\eta \in (0, 1]$ such that a model converges precisely when my coffee mug empties. The proof is trivial and left as an exercise to the GPU cluster.
 
 ## Methodological Framework
 
-Intelligence fundamentally requires measuring the compatibility between an observation $x$ and a prediction $y$. Energy-Based Models provide a mathematically sound framework for capturing these dependencies in continuous spaces. A simplified predictive objective function:
+Intelligence fundamentally requires measuring the compatibility between an observation $x$ and a prediction $y$. Energy-Based Models provide a mathematically sound framework for capturing these dependencies in continuous spaces. We define the predictive objective function $\mathcal{E}$ as:
 
 $$ \mathcal{E}(x, y) = \frac{1}{2} \| y - \text{Predictor}(\text{Encoder}(x)) \|^2 $$
+
+To penalize trivial solutions (e.g., when the encoder lazily collapses to a constant), we introduce a regularizer $\mathcal{R}$:
+
+$$ \mathcal{L} = \mathbb{E}_{x, y} \left[ \mathcal{E}(x, y) \right] + \lambda \mathcal{R}(\text{Encoder}) $$
+
+*Note: If $\mathcal{L}$ diverges to infinity, it is scientifically customary to blame the batch size.*
 
 ## Compute & Infrastructure Toolkit
 
@@ -29,11 +37,11 @@ Scaling advanced deep learning architectures requires a robust engineering found
 
 ## Selected Insights
 
-> **On Autoregressive LLMs:** 
-> Attempting to build autonomous agents solely on top of autoregressive generation is inherently flawed. They lack an internal model of the world, cannot plan hierarchically, and are susceptible to catastrophic compounding errors.
+> **Lemma 1: The Hallucination Bound** 
+> Attempting to build autonomous agents solely on top of autoregressive generation is inherently flawed. Since errors compound multiplicatively across sequence steps, the probability of generating a coherent, long-horizon plan decays at $\mathcal{O}(e^{-\gamma t})$. 
 
 > **On The Future of AI:**
-> The next paradigm shift will not come from larger datasets or more parameters in a Transformer, but from architectures that decouple perception from reasoning and utilize intrinsic cost functions to drive behavior.
+> The next paradigm shift will not come from simply throwing more $H100$s at a Transformer, but from architectures that decouple perception from reasoning. Intelligence is an optimization problem over continuous world states, not a stochastic parrot matching text patterns.
 
 ## Connect & Collaborate
 
@@ -42,5 +50,5 @@ Scaling advanced deep learning architectures requires a robust engineering found
 
 ---
 <div align="center">
-  <i>Building the foundation for machines that truly understand the world.</i>
+  <i>"I spend 90% of my time optimizing loss functions and the other 10% wondering why my gradients exploded."</i>
 </div>
