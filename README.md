@@ -19,7 +19,7 @@ The autoregressive paradigm is merely an off-ramp on the road to human-level int
 - 🔭 **Current Focus:** Joint Embedding Predictive Architectures (JEPA), Self-Supervised Learning, and Energy-Based Models (EBMs).
 - 🌱 **Advocating for:** Systems that predict abstract states of the world rather than raw pixels or text.
 - 💬 **Ask me about:** Why autoregressive generation is a recipe for disaster in autonomous agents.
-- 📫 **Reach me:** [Your email or Twitter/X]
+- 📫 **Reach me:** [LinkedIn](https://www.linkedin.com/in/him-d/)
 
 ---
 
