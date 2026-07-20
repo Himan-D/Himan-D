@@ -23,15 +23,21 @@ Intelligence fundamentally requires measuring the compatibility between an obser
 
 Let $Enc_x$ and $Enc_y$ be the context and target encoders, yielding abstract states $s_x = Enc_x(x)$ and $s_y = Enc_y(y)$. A predictor network uses $s_x$ and a latent variable $z \sim \mathcal{N}(0, I)$ (to account for irreducible uncertainty) to predict the future state:
 
-$$ \hat{s}_y = Pred(s_x, z) $$
+$$
+\hat{s}_y = Pred(s_x, z)
+$$
 
 The architecture is trained by minimizing the scalar energy function $E(x,y,z)$, representing the prediction error in the abstract space:
 
-$$ E(x, y, z) = \frac{1}{2} \| Pred(Enc_x(x), z) - Enc_y(y) \|_2^2 $$
+$$
+E(x, y, z) = \frac{1}{2} \| Pred(Enc_x(x), z) - Enc_y(y) \|_2^2
+$$
 
 To prevent representation collapse (where the encoders lazily map all inputs to a constant vector), we introduce Variance-Invariance-Covariance Regularization $\mathcal{R}(Enc)$:
 
-$$ \mathcal{L} = \mathbb{E}_{x, y} \left[ \min_{z} E(x, y, z) \right] + \lambda \mathcal{R}(Enc_x, Enc_y) $$
+$$
+\mathcal{L} = \mathbb{E}_{x, y} \left[ \min_{z} E(x, y, z) \right] + \lambda \mathcal{R}(Enc_x, Enc_y)
+$$
 
 *Note: If $\mathcal{L}$ diverges to infinity, it is scientifically customary to blame the batch size.*
 
