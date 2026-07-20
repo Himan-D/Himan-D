@@ -48,41 +48,41 @@ $$
 
 Let the internal state dynamics be described by the Itô SDE:
 
-$$
+```math
 ds_t = f(s_t, a_t) dt + \Sigma(s_t) dW_t
-$$
+```
 
 where $W_t$ is a standard Wiener process and $\Sigma(s_t)$ is the diffusion tensor. The time evolution of the probability density $p(s,t)$ is governed by the Fokker-Planck equation:
 
-$$
+```math
 \frac{\partial p}{\partial t} = -\nabla \cdot (f(s,a)p) + \frac{1}{2} \sum_{i,j} \frac{\partial^2}{\partial s_i \partial s_j} (\Sigma \Sigma^T)_{ij} p
-$$
+```
 
 The agent's objective is to minimize the expected free energy path integral over an infinite horizon $T \to \infty$. We define the functional $\mathcal{F}$ using the Kullback-Leibler divergence between the variational posterior $Q(s)$ and the true generative model $P(o, s)$:
 
-$$
+```math
 \mathcal{F}(\pi) = \mathbb{E}_{Q(o, s | \pi)} \left[ \int_0^\infty e^{-\gamma t} \left( \ln Q(s_t) - \ln P(o_t, s_t) \right) dt \right]
-$$
+```
 
 To find the optimal control policy $a_t^* \sim \pi^*$, we invoke the Hamilton-Jacobi-Bellman (HJB) equation. Let $V(s)$ be the optimal value function (the minimum expected free energy from state $s$):
 
-$$
+```math
 \gamma V(s) = \min_{a} \left\{ \mathcal{F}(s, a) + \nabla_s V(s)^T f(s,a) + \frac{1}{2} \text{Tr}\left( \Sigma(s)\Sigma(s)^T \nabla_{ss}^2 V(s) \right) \right\}
-$$
+```
 
 By taking the functional derivative with respect to the action $a$ and setting it to zero, we isolate the optimal policy:
 
-$$
+```math
 \frac{\partial \mathcal{F}}{\partial a} + \left( \frac{\partial f}{\partial a} \right)^T \nabla_s V(s) = 0
-$$
+```
 
 To prove global asymptotic stability, we propose $V(s)$ as a candidate Lyapunov function. Since the KL divergence component of $\mathcal{F}$ is strictly positive definite for $Q \neq P$, and $\mathcal{F} = 0 \iff Q = P$, we have $V(s) > 0$ for all states outside the target invariant set. 
 
 Taking the orbital derivative along the system trajectories:
 
-$$
+```math
 \dot{V}(s_t) = \nabla_s V^T \dot{s}_t = \nabla_s V^T f(s_t, a^*_t) \leq -\mathcal{F}(s_t, a^*_t) < 0
-$$
+```
 
 Because $\dot{V}(s) < 0$ globally, by LaSalle's Invariance Principle, the system trajectories converge almost surely to the largest invariant set where $\dot{V}(s) = 0$, which uniquely corresponds to the exact match between the variational posterior and the true generating process ($Q = P$). 
 
