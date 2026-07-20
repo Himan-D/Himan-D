@@ -1,42 +1,44 @@
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=250&section=header&text=Hi%20there,%20I'm%20Himan-D!%20👋&fontSize=50&fontAlignY=35&animation=twinkling" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&height=250&section=header&text=Building%20Advanced%20Machine%20Intelligence&fontSize=45&fontAlignY=35&animation=twinkling" />
 </div>
 
-<h3 align="center">A passionate developer building things for the web and beyond.</h3>
+<h3 align="center">"We're not going to get to human-level intelligence by simply scaling up LLMs."</h3>
 
 <p align="center">
   <a href="https://github.com/Himan-D">
-    <img src="https://komarev.com/ghpvc/?username=Himan-D&label=Profile%20views&color=0e75b6&style=flat" alt="Profile views" />
+    <img src="https://komarev.com/ghpvc/?username=Himan-D&label=Observers&color=0e75b6&style=flat" alt="Profile views" />
   </a>
 </p>
 
 ---
 
-### 👨‍💻 About Me
+### 🧠 Research Vision
 
-- 🔭 I’m currently working on **exciting new projects**
-- 🌱 I’m currently exploring **Advanced Web Technologies & Agentic AI**
-- 💬 Ask me about **Software Engineering, Open Source, and Tech**
-- 📫 How to reach me: **[Add your email or LinkedIn here]**
+The autoregressive paradigm is merely an off-ramp on the road to human-level intelligence. I am currently focused on architectures that allow machines to learn, remember, reason, and plan. True autonomy requires **Objective-Driven AI** and internal **World Models**—not just predicting the next token. 
+
+- 🔭 **Current Focus:** Joint Embedding Predictive Architectures (JEPA), Self-Supervised Learning, and Energy-Based Models (EBMs).
+- 🌱 **Advocating for:** Systems that predict abstract states of the world rather than raw pixels or text.
+- 💬 **Ask me about:** Why autoregressive generation is a recipe for disaster in autonomous agents.
+- 📫 **Reach me:** [Your email or Twitter/X]
 
 ---
 
-### 🛠️ Languages and Tools
+### 🛠️ The Toolkit of Intelligence
 
 <p align="center">
-  <img src="https://skillicons.dev/icons?i=ts,js,python,react,nextjs,nodejs,tailwind,aws,docker,git,linux,bash&perline=12" />
+  <img src="https://skillicons.dev/icons?i=pytorch,python,cpp,cuda,linux,bash,git,docker,aws,tensorflow,gcp,jupyter&perline=12" />
 </p>
 
 ---
 
-### 📊 GitHub Stats
+### 📊 Objective-Driven Metrics
 
 <div align="center">
   <a href="https://github.com/Himan-D">
-    <img src="https://github-readme-stats.vercel.app/api?username=Himan-D&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117" alt="Himan-D's GitHub Stats" />
+    <img src="https://github-readme-stats.vercel.app/api?username=Himan-D&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=7aa2f7" alt="Himan-D's GitHub Stats" />
   </a>
   <a href="https://github.com/Himan-D">
-    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Himan-D&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117" alt="Top Languages" />
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Himan-D&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=7aa2f7" alt="Top Languages" />
   </a>
 </div>
 
@@ -44,12 +46,12 @@
 
 <div align="center">
   <a href="https://github.com/Himan-D">
-    <img src="https://github-readme-streak-stats.herokuapp.com/?user=Himan-D&theme=tokyonight&hide_border=true&background=0D1117" alt="GitHub Streak" />
+    <img src="https://github-readme-streak-stats.herokuapp.com/?user=Himan-D&theme=tokyonight&hide_border=true&background=0D1117&ring=7aa2f7&fire=7aa2f7&currStreakNum=7aa2f7" alt="GitHub Streak" />
   </a>
 </div>
 
 ---
 
 <div align="center">
-  <i>"Code is poetry."</i>
+  <i>"Intelligence is the ability to understand how the world works, predict the consequences of actions, and plan accordingly."</i>
 </div>
