@@ -39,17 +39,55 @@ $$
 *Note: If $\mathcal{F}$ diverges to infinity, it is scientifically customary to blame the batch size.*
 
 <details>
-<summary><b>[Expand] Proof of Asymptotic Convergence for Action Selection</b></summary>
+<summary><b>[Expand] Proof of Asymptotic Global Convergence for Active Inference Policies</b></summary>
 <br>
-Let the environment be a Markov Decision Process (MDP) defined by the tuple $(\mathcal{S}, \mathcal{A}, \mathcal{T}, \mathcal{R}, \gamma)$.
-Assuming the generative model $P(o, s)$ is Lipschitz continuous and the variational distribution $Q(s)$ is parameterized by $\phi$, we take the gradient of the free energy with respect to the action policy $\pi(a|o)$:
+
+**Theorem:** Let an autonomous agent be governed by a continuous-time stochastic differential equation (SDE) over a smooth Riemannian manifold $\mathcal{M}$. The policy $\pi^*$ that continuously minimizes the variational free energy $\mathcal{F}$ converges almost surely (a.s.) to the invariant measure of the target generative process, thereby avoiding absorbing bounds (e.g., thermodynamic death).
+
+**Proof:**
+
+Let the internal state dynamics be described by the Itô SDE:
 
 $$
-\nabla_\pi \mathcal{F} = \int \nabla_\pi Q(a|o) \left( \ln Q(a|o) - \ln P(a|s) + \mathcal{F}(o, a) \right) da
+ds_t = f(s_t, a_t) dt + \Sigma(s_t) dW_t
 $$
 
-Under the assumption of an ergodic environment, the fixed point of this optimization yields a steady-state distribution matching the prior preferences. Ergo, the agent survives. 
-Q.E.D.
+where $W_t$ is a standard Wiener process and $\Sigma(s_t)$ is the diffusion tensor. The time evolution of the probability density $p(s,t)$ is governed by the Fokker-Planck equation:
+
+$$
+\frac{\partial p}{\partial t} = -\nabla \cdot (f(s,a)p) + \frac{1}{2} \sum_{i,j} \frac{\partial^2}{\partial s_i \partial s_j} (\Sigma \Sigma^T)_{ij} p
+$$
+
+The agent's objective is to minimize the expected free energy path integral over an infinite horizon $T \to \infty$. We define the functional $\mathcal{F}$ using the Kullback-Leibler divergence between the variational posterior $Q(s)$ and the true generative model $P(o, s)$:
+
+$$
+\mathcal{F}(\pi) = \mathbb{E}_{Q(o, s | \pi)} \left[ \int_0^\infty e^{-\gamma t} \left( \ln Q(s_t) - \ln P(o_t, s_t) \right) dt \right]
+$$
+
+To find the optimal control policy $a_t^* \sim \pi^*$, we invoke the Hamilton-Jacobi-Bellman (HJB) equation. Let $V(s)$ be the optimal value function (the minimum expected free energy from state $s$):
+
+$$
+\gamma V(s) = \min_{a} \left\{ \mathcal{F}(s, a) + \nabla_s V(s)^T f(s,a) + \frac{1}{2} \text{Tr}\left( \Sigma(s)\Sigma(s)^T \nabla_{ss}^2 V(s) \right) \right\}
+$$
+
+By taking the functional derivative with respect to the action $a$ and setting it to zero, we isolate the optimal policy:
+
+$$
+\frac{\partial \mathcal{F}}{\partial a} + \left( \frac{\partial f}{\partial a} \right)^T \nabla_s V(s) = 0
+$$
+
+To prove global asymptotic stability, we propose $V(s)$ as a candidate Lyapunov function. Since the KL divergence component of $\mathcal{F}$ is strictly positive definite for $Q \neq P$, and $\mathcal{F} = 0 \iff Q = P$, we have $V(s) > 0$ for all states outside the target invariant set. 
+
+Taking the orbital derivative along the system trajectories:
+
+$$
+\dot{V}(s_t) = \nabla_s V^T \dot{s}_t = \nabla_s V^T f(s_t, a^*_t) \leq -\mathcal{F}(s_t, a^*_t) < 0
+$$
+
+Because $\dot{V}(s) < 0$ globally, by LaSalle's Invariance Principle, the system trajectories converge almost surely to the largest invariant set where $\dot{V}(s) = 0$, which uniquely corresponds to the exact match between the variational posterior and the true generating process ($Q = P$). 
+
+Thus, the agent perfectly predicts and dictates its environment, securing indefinite survival. $\blacksquare$
+
 </details>
 
 ## Selected Preprints & Working Papers
