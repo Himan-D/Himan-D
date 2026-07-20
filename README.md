@@ -40,7 +40,7 @@ $$
 
 Scaling these dynamic systems requires a robust engineering foundation to handle high-dimensional manifolds without bottlenecking.
 
-![Research Stack](https://skillicons.dev/icons?i=pytorch,python,cpp,linux,bash,git,docker,aws,gcp,jupyter,rust,julia&perline=12)
+![Research Stack](https://skillicons.dev/icons?i=pytorch,python,cpp,linux,bash,git,docker,aws,gcp,tensorflow,rust,julia&perline=12)
 
 ## Selected Insights
 
