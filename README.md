@@ -1,5 +1,5 @@
 # Himan-D
-### Artificial Intelligence Researcher | Objective-Driven Models & Applied Optimization
+### Artificial Intelligence Researcher | Energy-Based Models & Applied Optimization
 
 > *"Autoregressive generation is just spicy autocomplete. Change my mind."*
 
@@ -9,7 +9,7 @@
 
 The current trajectory of scaling Large Language Models provides an off-ramp, rather than a highway, toward Advanced Machine Intelligence (AMI). Let $\mathcal{A}_N$ be an autoregressive model scaled over $N$ parameters. I propose that $\lim_{N \to \infty} P(\mathcal{A}_N \text{ achieves true autonomy}) \approx 0$. 
 
-My work is deeply aligned with **Joint Embedding Predictive Architectures (JEPA)** and **World Models**. True autonomy requires equipping machines with the ability to learn, remember, reason, and plan—preferably before the heat death of the universe.
+My research is deeply aligned with **Joint Embedding Predictive Architectures (JEPA)** and **World Models**. True autonomy requires equipping machines with the ability to learn, remember, reason, and plan by modeling the world in an abstract representation space—preferably before the heat death of the universe.
 
 ## Research Focus
 
@@ -17,21 +17,27 @@ My work is deeply aligned with **Joint Embedding Predictive Architectures (JEPA)
 - **Self-Supervised Learning (SSL):** Leveraging Energy-Based Models (EBMs) for robust representation learning, primarily because manual human annotation is a bottleneck I refuse to participate in.
 - **Applied Coffee Optimization:** Theorem 1 states there exists an optimal learning rate $\eta \in (0, 1]$ such that a model converges precisely when my coffee mug empties. The proof is trivial and left as an exercise to the GPU cluster.
 
-## Methodological Framework
+## Methodological Framework: JEPA & EBMs
 
-Intelligence fundamentally requires measuring the compatibility between an observation $x$ and a prediction $y$. Energy-Based Models provide a mathematically sound framework for capturing these dependencies in continuous spaces. We define the predictive objective function $\mathcal{E}$ as:
+Intelligence fundamentally requires measuring the compatibility between an observation $x$ and a target $y$ (such as a future state). In the JEPA framework, we map inputs to a latent representation space to avoid the computational noise of predicting exact pixel or token reconstructions.
 
-$$ \mathcal{E}(x, y) = \frac{1}{2} \| y - \text{Predictor}(\text{Encoder}(x)) \|^2 $$
+Let $Enc_x$ and $Enc_y$ be the context and target encoders, yielding abstract states $s_x = Enc_x(x)$ and $s_y = Enc_y(y)$. A predictor network uses $s_x$ and a latent variable $z \sim \mathcal{N}(0, I)$ (to account for irreducible uncertainty) to predict the future state:
 
-To penalize trivial solutions (e.g., when the encoder lazily collapses to a constant), we introduce a regularizer $\mathcal{R}$:
+$$ \hat{s}_y = Pred(s_x, z) $$
 
-$$ \mathcal{L} = \mathbb{E}_{x, y} \left[ \mathcal{E}(x, y) \right] + \lambda \mathcal{R}(\text{Encoder}) $$
+The architecture is trained by minimizing the scalar energy function $E(x,y,z)$, representing the prediction error in the abstract space:
+
+$$ E(x, y, z) = \frac{1}{2} \| Pred(Enc_x(x), z) - Enc_y(y) \|_2^2 $$
+
+To prevent representation collapse (where the encoders lazily map all inputs to a constant vector), we introduce Variance-Invariance-Covariance Regularization $\mathcal{R}(Enc)$:
+
+$$ \mathcal{L} = \mathbb{E}_{x, y} \left[ \min_{z} E(x, y, z) \right] + \lambda \mathcal{R}(Enc_x, Enc_y) $$
 
 *Note: If $\mathcal{L}$ diverges to infinity, it is scientifically customary to blame the batch size.*
 
 ## Compute & Infrastructure Toolkit
 
-Scaling advanced deep learning architectures requires a robust engineering foundation.
+Scaling these hierarchical predictors requires a robust engineering foundation to handle high-dimensional latent variables without bottlenecking.
 
 ![Research Stack](https://skillicons.dev/icons?i=pytorch,python,cpp,linux,bash,git,docker,aws,gcp,jupyter&perline=10)
 
