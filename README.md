@@ -96,6 +96,19 @@ Thus, the agent perfectly predicts and dictates its environment, securing indefi
 - `[2511.03450]` *Autoregressive Collapse: Why Next-Token Prediction Cannot Yield General Intelligence*
 - `[2502.11899]` *Non-Euclidean Manifold Traversals in Hierarchical JEPAs*
 
+## Developer Toolkits & Technical Courses
+
+To support my open-source work and fund my compute clusters, I package my internal production tools and deep-dive technical notes into high-value bundles. If you find my research helpful, check them out:
+
+- 🧠 **[Advanced AI Agent Architecture](https://trinetra43.gumroad.com/l/wpzlta):** Learn true LLM orchestration with ReAct loops and state management.
+- 🌐 **[Mastering Distributed Systems in Go](https://trinetra43.gumroad.com/l/ymtzce):** Deep technical dives into Raft, Gossip, and consensus algorithms.
+- ☁️ **[The Production AWS Infrastructure Boilerplate](https://trinetra43.gumroad.com/l/hvkubl):** Production-grade Terraform VPC + EKS boilerplate for rapid deployments.
+- ⚛️ **[The Enterprise Next.js Boilerplate](https://trinetra43.gumroad.com/l/djjju):** Optimized React/Next.js 14 template for quick startup bootstrapping.
+- 🗄️ **[The Data Engineering Airflow Toolkit](https://trinetra43.gumroad.com/l/usihao):** Local Airflow + Postgres Docker setup with production ETL DAGs.
+- 🛡️ **[The Cybersecurity Script Bundle](https://trinetra43.gumroad.com/l/qwkmqq):** Async Python port scanners and web log brute-force analyzers.
+- 🤖 **[The Machine Learning Engineer's Starter Kit](https://trinetra43.gumroad.com/l/hcforq):** PyTorch AMP training and FastAPI inference boilerplate.
+- ⚡ **[The Ultimate Developer Productivity Pack](https://trinetra43.gumroad.com/l/wiuub):** High-efficiency Bash aliases, Git hooks, and CI/CD pipelines.
+
 ## Recommended Syllabus
 
 For those seeking to escape the local minima of standard Deep Learning tutorials, I recommend the following foundational texts:
