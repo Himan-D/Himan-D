@@ -1,71 +1,223 @@
 ---
 import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const featuredReports = [
+  {
+    title: 'Hierarchical Memory Persistence and Context Retrieval in Multi-Turn Autonomous Agents',
+    authors: 'Himanshu Dixit',
+    venue: 'Technical Report',
+    date: 'September 2026',
+    codeUrl: 'https://github.com/Himan-D/agent-memory',
+    abstract: 'Autonomous agent frameworks routinely degrade over long-horizon tasks due to context window saturation, attention dilution, and the inability to maintain persistent internal state. We present a dual-layer memory hierarchy combining episodic vector retrieval with a relational session graph. Empirical evaluation across multi-step software engineering benchmarks indicates sustained task completion accuracy over 50+ conversation turns without memory thrashing.',
+    bibtex: `@techreport{dixit2026hierarchical,
+  title       = {Hierarchical Memory Persistence and Context Retrieval in Multi-Turn Autonomous Agents},
+  author      = {Dixit, Himanshu},
+  institution = {Trinetra Labs},
+  year        = {2026},
+  month       = {September},
+  url         = {https://github.com/Himan-D/agent-memory}
+}`
+  },
+  {
+    title: 'Algorithmic De-looping and Inversion of Cyclic Software Dependency Graphs',
+    authors: 'Himanshu Dixit',
+    venue: 'Technical Report',
+    date: 'September 2026',
+    codeUrl: 'https://github.com/Himan-D/deslop',
+    abstract: 'Circular dependencies in large-scale software systems induce cognitive friction, impair compiler parallelization, and create brittle update semantics. We propose an automated architectural de-looping framework leveraging Tarjan\'s Strongly Connected Components (SCC) to isolate recursive cycles, followed by heuristic Feedback Arc Set (FAS) minimization. By inverting identified edges through injected traits and leaf seams, the system deterministically recovers a monotonic Directed Acyclic Graph (DAG).',
+    bibtex: `@techreport{dixit2026deslop,
+  title       = {Algorithmic De-looping and Inversion of Cyclic Software Dependency Graphs},
+  author      = {Dixit, Himanshu},
+  institution = {Trinetra Labs},
+  year        = {2026},
+  month       = {September},
+  url         = {https://github.com/Himan-D/deslop}
+}`
+  },
+  {
+    title: 'Continuous State-Space Formulations for Sub-Quadratic Sequence Modeling',
+    authors: 'Himanshu Dixit',
+    venue: 'Working Paper',
+    date: '2026',
+    codeUrl: null,
+    abstract: 'While self-attention mechanisms offer expressive associative recall, their quadratic compute and memory scaling bottlenecks infinite-context inference. We study continuous-time state-space models discretized via bilinear and zero-order hold transformations, examining their inductive biases when integrated into hierarchical predictive architectures.',
+    bibtex: null
+  }
+];
 ---
 
-<Layout title="Himanshu Dixit | AI Systems Researcher">
-  <section>
+<Layout title="Himanshu Dixit | AI Systems Researcher" activeTab="overview">
+  <section id="about">
     <h2>About</h2>
     <p>
-      I am an AI systems researcher and software engineer focusing on autonomous agent architectures,
-      high-throughput model inference engines, continuous sequence modeling (state-space models),
-      and applied mathematical systems.
+      I am an AI systems researcher and software engineer working at the intersection of 
+      <strong>autonomous agent runtimes</strong>, <strong>high-throughput ML inference</strong>, 
+      and <strong>continuous sequence modeling</strong>. My focus centers on addressing the 
+      inherent limitations of pure autoregressive memorization through verified architectural 
+      abstractions, hierarchical memory systems, and sub-quadratic dynamical sequence representations.
     </p>
     <p>
-      My work emphasizes building minimal, verified, and high-performance engineering artifacts—from
-      persistent memory hierarchies and dependency de-looping engines in Rust, to continuous batching
-      and low-latency algorithmic trading pipelines.
+      Much of my engineering effort is spent building minimal, deterministic open-source 
+      systems in <strong>Rust</strong>, <strong>C++/CUDA</strong>, and <strong>Python</strong>—from 
+      AST-level codebase inversion engines and persistent agent memory runtimes, to high-frequency quantitative 
+      data pipelines and optimized LLM serving architectures.
     </p>
   </section>
 
-  <section>
-    <h2>Research Focus</h2>
-    <ul>
-      <li><strong>Autonomous Agent Systems:</strong> Long-horizon execution, state persistence, and hierarchical memory retrieval.</li>
-      <li><strong>High-Throughput Inference:</strong> PagedAttention, KV-cache optimization, and continuous batching systems.</li>
-      <li><strong>Continuous Sequence Models:</strong> Structured state-space models (SSMs) and continuous-time dynamical representations.</li>
-      <li><strong>Applied Informatics:</strong> Graph neural networks for materials informatics and high-frequency financial pipelines.</li>
+  <section id="news">
+    <h2>Recent Updates</h2>
+    <ul class="timeline-list">
+      <li>
+        <span class="timeline-date">Sep 2026</span>
+        <span>Open-sourced <a href="https://github.com/Himan-D/deslop" target="_blank" rel="noopener noreferrer"><code>deslop</code></a>, an AST-driven codebase inversion and cycle-breaking engine in Rust using Tarjan's SCC and Feedback Arc Set minimization.</span>
+      </li>
+      <li>
+        <span class="timeline-date">Sep 2026</span>
+        <span>Authored technical report on hierarchical state persistence and multi-turn context retrieval for autonomous agent frameworks.</span>
+      </li>
+      <li>
+        <span class="timeline-date">Aug 2026</span>
+        <span>Released <a href="https://github.com/Himan-D/agent-memory" target="_blank" rel="noopener noreferrer"><code>agent-memory</code></a>: A persistent memory and contextual indexing runtime for multi-agent workflows.</span>
+      </li>
+      <li>
+        <span class="timeline-date">Jul 2026</span>
+        <span>Benchmarked continuous batching and KV-cache kernel memory dynamics on custom high-concurrency LLM serving pipelines (<a href="https://github.com/Himan-D/vllm" target="_blank" rel="noopener noreferrer"><code>vllm</code></a> fork).</span>
+      </li>
     </ul>
   </section>
 
-  <section>
-    <h2>Featured Software</h2>
-    <div class="item-block">
-      <div class="item-title"><a href="https://github.com/Himan-D/agent-memory" target="_blank" rel="noopener noreferrer">agent-memory</a></div>
-      <div class="item-desc">Persistent state and hierarchical memory retrieval runtime for autonomous agents.</div>
-      <div class="item-links"><a href="https://github.com/Himan-D/agent-memory" target="_blank" rel="noopener noreferrer">[Code]</a></div>
-    </div>
-    <div class="item-block">
-      <div class="item-title"><a href="https://github.com/Himan-D/deslop" target="_blank" rel="noopener noreferrer">deslop</a></div>
-      <div class="item-desc">High-performance Rust engine for AST-level codebase inversion, Tarjan SCC cycle detection, and dependency de-looping.</div>
-      <div class="item-links"><a href="https://github.com/Himan-D/deslop" target="_blank" rel="noopener noreferrer">[Code]</a></div>
-    </div>
-    <div class="item-block">
-      <div class="item-title"><a href="https://github.com/Himan-D/vllm" target="_blank" rel="noopener noreferrer">vllm</a> (Fork)</div>
-      <div class="item-desc">High-throughput and memory-efficient LLM serving engine with PagedAttention and continuous batching.</div>
-      <div class="item-links"><a href="https://github.com/Himan-D/vllm" target="_blank" rel="noopener noreferrer">[Code]</a></div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Selected Writings &amp; Reports</h2>
-    <div class="item-block">
-      <div class="item-title">Hierarchical Memory Persistence and Context Retrieval in Multi-Turn Autonomous Agents</div>
-      <div class="item-meta">Himanshu Dixit · Technical Report, 2026</div>
-      <div class="item-links"><a href="https://github.com/Himan-D/agent-memory" target="_blank" rel="noopener noreferrer">[Code &amp; Spec]</a></div>
-    </div>
-    <div class="item-block">
-      <div class="item-title">Algorithmic De-looping and Inversion of Cyclic Software Dependency Graphs</div>
-      <div class="item-meta">Himanshu Dixit · Technical Report, 2026</div>
-      <div class="item-links"><a href="https://github.com/Himan-D/deslop" target="_blank" rel="noopener noreferrer">[Code &amp; Spec]</a></div>
-    </div>
-  </section>
-
-  <section>
-    <h2>Contact</h2>
-    <p>
-      Email: <a href="mailto:himan@trinetralabs.ai">himan@trinetralabs.ai</a><br />
-      GitHub: <a href="https://github.com/Himan-D" target="_blank" rel="noopener noreferrer">github.com/Himan-D</a><br />
-      LinkedIn: <a href="https://www.linkedin.com/in/him-d/" target="_blank" rel="noopener noreferrer">linkedin.com/in/him-d</a>
+  <section id="research-focus">
+    <h2>Research Vectors</h2>
+    <ul>
+      <li>
+        <strong>Autonomous Agent Memory Hierarchies:</strong> Designing deterministic runtimes, state persistence mechanisms, and structured retrieval layers that enable agents to execute across million-token horizons without context degradation.
+      </li>
+      <li>
+        <strong>High-Throughput Model Serving:</strong> Kernel-level optimizations, continuous batching, and KV-cache paging (PagedAttention) to maximize token throughput and minimize latency in generative models.
+      </li>
+      <li>
+        <strong>Continuous-Time Sequence Models (SSMs):</strong> Formulating sequence transformations through structured state-space models and neural differential equations to achieve linear computational complexity with respect to context length.
+      </li>
+      <li>
+        <strong>Topological Graph Informatics:</strong> Geometric deep learning and graph neural networks applied to crystalline materials modeling and high-frequency correlation structures in financial markets.
+      </li>
+    </ul>
+    <p style="font-size: 0.95rem;">
+      <a href={`${base}/research`}>Read the full research statement &rarr;</a>
     </p>
+  </section>
+
+  <section id="featured-systems">
+    <h2>Featured Systems &amp; Software</h2>
+    
+    <div class="item-block">
+      <div class="item-header">
+        <span class="item-title"><a href="https://github.com/Himan-D/deslop" target="_blank" rel="noopener noreferrer">deslop</a></span>
+        <span class="tag-badge">Rust / AST / Graph Theory</span>
+      </div>
+      <div class="item-meta">High-Performance Codebase Inversion &amp; Architectural De-Slopping Engine</div>
+      <div class="item-desc">
+        Parses multi-language codebases into Symbol Dependency Graphs (SDGs), detects cyclic dependencies via Tarjan's Strongly Connected Components (SCC), and synthesizes clean DAG architectures using Feedback Arc Set (FAS) minimization and interface inversion.
+      </div>
+      <div class="item-links">
+        <a href="https://github.com/Himan-D/deslop" target="_blank" rel="noopener noreferrer">[Repository]</a>
+        <a href="https://github.com/Himan-D/deslop/blob/main/ENTERPRISE_PLATFORM_BLUEPRINT.md" target="_blank" rel="noopener noreferrer">[Architecture Spec]</a>
+      </div>
+    </div>
+
+    <div class="item-block">
+      <div class="item-header">
+        <span class="item-title"><a href="https://github.com/Himan-D/agent-memory" target="_blank" rel="noopener noreferrer">agent-memory</a></span>
+        <span class="tag-badge">TypeScript / Vector Indexing</span>
+      </div>
+      <div class="item-meta">Persistent State &amp; Context Recall Runtime for Autonomous Agents</div>
+      <div class="item-desc">
+        A hierarchical memory substrate for multi-turn autonomous agents. Combines episodic vector search with relational session graphs to maintain coherent long-term memory across disjoint agent sessions.
+      </div>
+      <div class="item-links">
+        <a href="https://github.com/Himan-D/agent-memory" target="_blank" rel="noopener noreferrer">[Repository]</a>
+      </div>
+    </div>
+
+    <div class="item-block">
+      <div class="item-header">
+        <span class="item-title"><a href="https://github.com/Himan-D/vllm" target="_blank" rel="noopener noreferrer">vllm</a> (Fork)</span>
+        <span class="tag-badge">C++ / CUDA / Python</span>
+      </div>
+      <div class="item-meta">High-Throughput Distributed LLM Serving</div>
+      <div class="item-desc">
+        Experiments and performance tunings in PagedAttention, KV-cache kernel memory management, and high-concurrency continuous batching for large-scale transformer serving.
+      </div>
+      <div class="item-links">
+        <a href="https://github.com/Himan-D/vllm" target="_blank" rel="noopener noreferrer">[Fork]</a>
+      </div>
+    </div>
+
+    <div class="item-block">
+      <div class="item-header">
+        <span class="item-title"><a href="https://github.com/Himan-D/flux" target="_blank" rel="noopener noreferrer">flux</a></span>
+        <span class="tag-badge">Systems / Quantitative Analytics</span>
+      </div>
+      <div class="item-meta">High-Frequency Quantitative Execution Pipeline</div>
+      <div class="item-desc">
+        Deterministic, low-latency execution architecture designed for institutional algorithmic trading and market micro-structure analysis.
+      </div>
+      <div class="item-links">
+        <a href="https://github.com/Himan-D/flux" target="_blank" rel="noopener noreferrer">[Repository]</a>
+      </div>
+    </div>
+
+    <p style="font-size: 0.95rem;">
+      <a href={`${base}/systems`}>View all 8 open-source systems &rarr;</a>
+    </p>
+  </section>
+
+  <section id="selected-preprints">
+    <h2>Selected Papers &amp; Technical Reports</h2>
+
+    {featuredReports.map((r) => (
+      <div class="item-block">
+        <div class="item-title">{r.title}</div>
+        <div class="item-meta"><strong>{r.authors}</strong> · <em>{r.venue}</em> ({r.date})</div>
+        <div class="item-links">
+          {r.codeUrl && (
+            <a href={r.codeUrl} target="_blank" rel="noopener noreferrer">[Code &amp; Spec]</a>
+          )}
+          <details>
+            <summary>[Abstract]</summary>
+            <div class="expanded-box">
+              {r.abstract}
+            </div>
+          </details>
+          {r.bibtex && (
+            <details>
+              <summary>[BibTeX]</summary>
+              <div class="expanded-box">
+                <pre class="bibtex-code">{r.bibtex}</pre>
+              </div>
+            </details>
+          )}
+        </div>
+      </div>
+    ))}
+
+    <p style="font-size: 0.95rem;">
+      <a href={`${base}/publications`}>View all publications &amp; citations &rarr;</a>
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact &amp; Coordinates</h2>
+    <p>
+      I welcome technical correspondence regarding autonomous systems, distributed inference, 
+      or mathematical modeling.
+    </p>
+    <ul style="list-style: none; padding-left: 0; font-family: var(--font-sans); font-size: 0.95rem;">
+      <li style="margin-bottom: 0.5rem;"><strong>Email:</strong> <a href="mailto:himan@trinetralabs.ai">himan@trinetralabs.ai</a></li>
+      <li style="margin-bottom: 0.5rem;"><strong>GitHub:</strong> <a href="https://github.com/Himan-D" target="_blank" rel="noopener noreferrer">github.com/Himan-D</a></li>
+      <li style="margin-bottom: 0.5rem;"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/him-d/" target="_blank" rel="noopener noreferrer">linkedin.com/in/him-d</a></li>
+      <li style="margin-bottom: 0.5rem;"><strong>Location:</strong> Chennai / India (Remote / Global)</li>
+    </ul>
   </section>
 </Layout>

@@ -2,42 +2,86 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Research | Himanshu Dixit">
-  <h2>Research Vectors</h2>
-  
+<Layout title="Research Statement | Himanshu Dixit" activeTab="research">
+  <h2>Research Agenda</h2>
+
+  <p>
+    Modern deep learning relies heavily on scaling the compute and parameter budget of autoregressive 
+    sequence models. While this approach has demonstrated impressive few-shot empirical capabilities, 
+    it faces severe theoretical and practical bottlenecks: quadratic attention complexity, context rot, 
+    and the lack of persistent internal state.
+  </p>
+  <p>
+    My research investigates alternative foundations for scalable intelligence across three interrelated 
+    thrusts: <strong>memory-augmented agent runtimes</strong>, <strong>continuous dynamical systems</strong>, 
+    and <strong>high-throughput systems engineering</strong>.
+  </p>
+
+  <hr class="divider" />
+
   <div class="item-block">
-    <h3>Autonomous Agent Systems &amp; Memory Hierarchies</h3>
+    <h3>1. Autonomous Agent Architectures &amp; Hierarchical Memory</h3>
     <p class="item-desc">
-      Standard stateless prompt-response architectures break down during complex, long-horizon tasks.
-      I research and design deterministic execution runtimes, hierarchical memory structures, and
-      context retrieval mechanisms that allow autonomous agents to maintain coherent state across millions
-      of tokens without context rot.
+      Stateless prompt-response paradigms force language models to reconstruct reasoning trajectories on 
+      every step from an increasingly bloated context window. In real-world software engineering and 
+      autonomous robotics, tasks require hundreds of sequential decisions over days or weeks.
+    </p>
+    <p class="item-desc">
+      I design deterministic execution runtimes that separate ephemeral reasoning context from 
+      permanent procedural memory. By unifying episodic vector embeddings with structural knowledge graphs, 
+      agents maintain accurate internal representations of complex codebases and environments without 
+      degrading due to attention dilution.
+    </p>
+    <p class="item-links">
+      <a href="https://github.com/Himan-D/agent-memory" target="_blank" rel="noopener noreferrer">[Related System: agent-memory]</a>
     </p>
   </div>
 
   <div class="item-block">
-    <h3>Inference Systems &amp; Sub-Quadratic Modeling</h3>
+    <h3>2. Continuous-Time Sequence Models (SSMs) &amp; Dynamical Systems</h3>
     <p class="item-desc">
-      Transformer self-attention imposes quadratic compute and memory costs with respect to sequence length.
-      My systems work investigates continuous state-space models (SSMs), linear-time sequence operators,
-      and kernel-level inference serving optimizations including continuous batching and efficient KV cache paging.
+      Standard Transformer self-attention scales at <em>O</em>(<em>N</em><sup>2</sup>) in both computational operations 
+      and memory footprint with respect to sequence length <em>N</em>. Structured State-Space Models (e.g., S4, Mamba) 
+      and continuous-time Neural Differential Equations offer a principled alternative: mapping input continuous 
+      signals to latent representations in strictly linear or sub-quadratic time.
+    </p>
+    <p class="item-desc">
+      My working papers explore the algebraic properties and stability criteria of discretized state matrices, 
+      evaluating their capacity to retain associative recall and hierarchical structure over unconstrained 
+      context windows.
     </p>
   </div>
 
   <div class="item-block">
-    <h3>Structural Graph Learning &amp; Materials Informatics</h3>
+    <h3>3. High-Throughput Inference &amp; Memory Paging Systems</h3>
     <p class="item-desc">
-      Applying geometric deep learning and graph neural networks to physical systems, crystalline structures,
-      and materials property estimation where symmetries and non-Euclidean topologies dictate underlying behavior.
+      Theoretical algorithmic improvements are meaningless without low-level systems implementations capable of 
+      saturating modern accelerator memory bandwidth. 
+    </p>
+    <p class="item-desc">
+      My systems work involves performance characterization on modern GPU architectures: analyzing 
+      PagedAttention KV-cache fragmentation, write-amplification in high-concurrency continuous batching, 
+      and custom kernel execution in C++/CUDA and PyTorch.
+    </p>
+    <p class="item-links">
+      <a href="https://github.com/Himan-D/vllm" target="_blank" rel="noopener noreferrer">[Serving Experiments: vllm Fork]</a>
     </p>
   </div>
 
   <div class="item-block">
-    <h3>Codebase Inversion &amp; Architectural Synthesis</h3>
+    <h3>4. Topological Graph Learning &amp; Materials Informatics</h3>
     <p class="item-desc">
-      Automated methods for extracting Directed Acyclic Graph (DAG) layerings from tangled, circularly-dependent
-      software systems. Using Feedback Arc Set (FAS) analysis, interface inversion, and AST transformations
-      to formalize software architectures into verified specifications.
+      Many physical and structural systems do not naturally reside in Euclidean space. In materials informatics 
+      and financial micro-structures, symmetry groups and topological connectivity dictate physical properties 
+      and market contagion.
+    </p>
+    <p class="item-desc">
+      I build deep learning toolkits and graph neural networks (GNNs) that exploit group equivariance to predict 
+      crystalline formation energies and model multi-agent correlation graphs in real-time.
+    </p>
+    <p class="item-links">
+      <a href="https://github.com/Himan-D/matgraph-cli" target="_blank" rel="noopener noreferrer">[Tool: matgraph-cli]</a>
+      <a href="https://github.com/Himan-D/fingraph" target="_blank" rel="noopener noreferrer">[Engine: fingraph]</a>
     </p>
   </div>
 </Layout>

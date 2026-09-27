@@ -1,46 +1,87 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const reports = [
+const publications = [
   {
     title: 'Hierarchical Memory Persistence and Context Retrieval in Multi-Turn Autonomous Agents',
     authors: 'Himanshu Dixit',
-    venue: 'Technical Report, 2026',
-    links: [
-      { label: 'Code & Spec', url: 'https://github.com/Himan-D/agent-memory' }
-    ]
+    venue: 'Technical Report, Trinetra Labs',
+    year: '2026',
+    month: 'September',
+    codeUrl: 'https://github.com/Himan-D/agent-memory',
+    abstract: 'Autonomous agent frameworks routinely degrade over long-horizon tasks due to context window saturation, attention dilution, and the inability to maintain persistent internal state. We present a dual-layer memory hierarchy combining episodic vector retrieval with a relational session graph. Empirical evaluation across multi-step software engineering benchmarks indicates sustained task completion accuracy over 50+ conversation turns without memory thrashing.',
+    bibtex: `@techreport{dixit2026hierarchical,
+  title       = {Hierarchical Memory Persistence and Context Retrieval in Multi-Turn Autonomous Agents},
+  author      = {Dixit, Himanshu},
+  institution = {Trinetra Labs},
+  year        = {2026},
+  month       = {September},
+  url         = {https://github.com/Himan-D/agent-memory}
+}`
   },
   {
     title: 'Algorithmic De-looping and Inversion of Cyclic Software Dependency Graphs',
     authors: 'Himanshu Dixit',
-    venue: 'Technical Report, 2026',
-    links: [
-      { label: 'Code & Spec', url: 'https://github.com/Himan-D/deslop' }
-    ]
+    venue: 'Technical Report, Trinetra Labs',
+    year: '2026',
+    month: 'September',
+    codeUrl: 'https://github.com/Himan-D/deslop',
+    abstract: 'Circular dependencies in large-scale software systems induce cognitive friction, impair compiler parallelization, and create brittle update semantics. We propose an automated architectural de-looping framework leveraging Tarjan\'s Strongly Connected Components (SCC) to isolate recursive cycles, followed by heuristic Feedback Arc Set (FAS) minimization. By inverting identified edges through injected traits and leaf seams, the system deterministically recovers a monotonic Directed Acyclic Graph (DAG).',
+    bibtex: `@techreport{dixit2026deslop,
+  title       = {Algorithmic De-looping and Inversion of Cyclic Software Dependency Graphs},
+  author      = {Dixit, Himanshu},
+  institution = {Trinetra Labs},
+  year        = {2026},
+  month       = {September},
+  url         = {https://github.com/Himan-D/deslop}
+}`
   },
   {
     title: 'Continuous State-Space Formulations for Sub-Quadratic Sequence Modeling',
     authors: 'Himanshu Dixit',
-    venue: 'Working Paper, 2026',
-    links: []
+    venue: 'Working Paper',
+    year: '2026',
+    codeUrl: null,
+    abstract: 'While self-attention mechanisms offer expressive associative recall, their quadratic compute and memory scaling bottlenecks infinite-context inference. We study continuous-time state-space models discretized via bilinear and zero-order hold transformations, examining their inductive biases when integrated into hierarchical predictive architectures.',
+    bibtex: `@article{dixit2026continuous,
+  title       = {Continuous State-Space Formulations for Sub-Quadratic Sequence Modeling},
+  author      = {Dixit, Himanshu},
+  journal     = {Working Paper},
+  year        = {2026}
+}`
   }
 ];
 ---
 
-<Layout title="Publications | Himanshu Dixit">
-  <h2>Technical Reports &amp; Working Papers</h2>
-  
-  {reports.map((p) => (
+<Layout title="Publications & Preprints | Himanshu Dixit" activeTab="publications">
+  <h2>Publications &amp; Technical Reports</h2>
+  <p>
+    Selected research papers, working preprints, and system technical reports:
+  </p>
+
+  {publications.map((p) => (
     <div class="item-block">
       <div class="item-title">{p.title}</div>
-      <div class="item-meta">{p.authors} · {p.venue}</div>
-      {p.links.length > 0 && (
-        <div class="item-links">
-          {p.links.map((l) => (
-            <a href={l.url} target="_blank" rel="noopener noreferrer">[{l.label}]</a>
-          ))}
-        </div>
-      )}
+      <div class="item-meta">
+        <strong>{p.authors}</strong> · <em>{p.venue}</em> ({p.year})
+      </div>
+      <div class="item-links">
+        {p.codeUrl && (
+          <a href={p.codeUrl} target="_blank" rel="noopener noreferrer">[Code &amp; Spec]</a>
+        )}
+        <details>
+          <summary>[Abstract]</summary>
+          <div class="expanded-box">
+            {p.abstract}
+          </div>
+        </details>
+        <details>
+          <summary>[BibTeX]</summary>
+          <div class="expanded-box">
+            <pre class="bibtex-code">{p.bibtex}</pre>
+          </div>
+        </details>
+      </div>
     </div>
   ))}
 </Layout>

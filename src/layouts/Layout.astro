@@ -4,9 +4,15 @@ import '../styles/global.css';
 interface Props {
   title: string;
   description?: string;
+  activeTab?: 'overview' | 'research' | 'systems' | 'publications';
 }
 
-const { title, description = "Himanshu Dixit — AI Systems Researcher & Software Engineer" } = Astro.props;
+const { 
+  title, 
+  description = "Himanshu Dixit — AI Systems Researcher & Software Engineer focusing on autonomous agent architectures and continuous sequence models.",
+  activeTab = 'overview'
+} = Astro.props;
+
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
@@ -17,28 +23,53 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
   </head>
   <body>
     <div class="container">
       <header class="header">
-        <h1 class="name"><a href={`${base}/`}>Himanshu Dixit</a></h1>
-        <p class="role">AI Systems Researcher &amp; Software Engineer</p>
-        <div class="nav-links">
-          <a href={`${base}/`}>Overview</a>
-          <a href={`${base}/research`}>Research</a>
-          <a href={`${base}/systems`}>Systems &amp; Code</a>
-          <a href={`${base}/publications`}>Publications</a>
-          <a href="https://github.com/Himan-D" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a href="mailto:himan@trinetralabs.ai">Contact</a>
+        <div class="header-grid">
+          <div class="header-text">
+            <h1 class="name"><a href={`${base}/`}>Himanshu Dixit</a></h1>
+            <p class="title-role">AI Systems Researcher &amp; Systems Engineer</p>
+            <p class="affiliation">Focus: Autonomous Agents · High-Throughput Inference · Continuous Sequence Models</p>
+            <div class="coords">
+              <a href="mailto:himan@trinetralabs.ai">Email</a> · 
+              <a href="https://github.com/Himan-D" target="_blank" rel="noopener noreferrer">GitHub</a> · 
+              <a href="https://www.linkedin.com/in/him-d/" target="_blank" rel="noopener noreferrer">LinkedIn</a> · 
+              <a href={`${base}/publications`}>Papers &amp; Preprints</a>
+            </div>
+          </div>
+          <div class="portrait-wrapper">
+            <img 
+              src="https://avatars.githubusercontent.com/u/262577684?v=4" 
+              alt="Himanshu Dixit" 
+              class="portrait" 
+              loading="eager"
+            />
+          </div>
         </div>
+
+        <nav class="nav-bar">
+          <a href={`${base}/`} class={activeTab === 'overview' ? 'active' : ''}>Overview</a>
+          <a href={`${base}/research`} class={activeTab === 'research' ? 'active' : ''}>Research Agenda</a>
+          <a href={`${base}/systems`} class={activeTab === 'systems' ? 'active' : ''}>Systems &amp; Code</a>
+          <a href={`${base}/publications`} class={activeTab === 'publications' ? 'active' : ''}>Publications &amp; Preprints</a>
+        </nav>
       </header>
+
       <hr class="divider" />
+
       <main>
         <slot />
       </main>
+
       <footer class="footer">
         <hr class="divider" />
-        <p>Himanshu Dixit · <a href="https://github.com/Himan-D" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://www.linkedin.com/in/him-d/" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="mailto:himan@trinetralabs.ai">himan@trinetralabs.ai</a></p>
+        <p>
+          &copy; {new Date().getFullYear()} Himanshu Dixit. Hosted on GitHub Pages via Astro.
+          Plain semantic HTML &amp; CSS. No tracking, zero bloat.
+        </p>
       </footer>
     </div>
   </body>

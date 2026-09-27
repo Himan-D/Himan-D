@@ -3,66 +3,121 @@ import Layout from '../layouts/Layout.astro';
 
 const systems = [
   {
-    name: 'agent-memory',
-    url: 'https://github.com/Himan-D/agent-memory',
-    desc: 'Persistent state and hierarchical memory recall system for autonomous agent workflows.',
-    tags: 'TypeScript / Vector DB / System Architecture'
-  },
-  {
     name: 'deslop',
     url: 'https://github.com/Himan-D/deslop',
-    desc: 'High-performance Rust engine for AST-level codebase inversion, Tarjan SCC cycle detection, and dependency de-looping.',
-    tags: 'Rust / AST / Graph Theory'
+    specUrl: 'https://github.com/Himan-D/deslop/blob/main/ENTERPRISE_PLATFORM_BLUEPRINT.md',
+    headline: 'High-Performance Codebase Inversion & Architectural De-Slopping Engine',
+    tags: 'Rust / Syn AST / petgraph / Tarjan SCC',
+    details: [
+      'Universal AST parsing across Rust, TypeScript, Python, and Go into a Symbol Dependency Graph (SDG).',
+      'Detects cyclic dependency loops using Tarjan’s Strongly Connected Components (SCC) algorithm.',
+      'Resolves circular coupling via Feedback Arc Set (FAS) minimization and interface/trait inversion.',
+      'Identifies ghost abstractions, tollbooth wrappers, and copy-paste code clones to recover clean DAG architectures.'
+    ]
+  },
+  {
+    name: 'agent-memory',
+    url: 'https://github.com/Himan-D/agent-memory',
+    headline: 'Persistent Hierarchical Memory System for Autonomous Multi-Turn Agents',
+    tags: 'TypeScript / Vector DB / Context Recall',
+    details: [
+      'Dual-layer memory substrate decoupling short-term conversational context from long-term episodic knowledge.',
+      'Hybrid semantic indexing combining dense vector embeddings with relational session graphs.',
+      'Prevents context dilution and token saturation across 50+ turn execution plans.'
+    ]
   },
   {
     name: 'vllm',
     url: 'https://github.com/Himan-D/vllm',
-    desc: 'High-throughput and memory-efficient LLM inference engine with PagedAttention.',
-    tags: 'C++ / CUDA / Python'
+    headline: 'High-Throughput & Memory-Efficient LLM Serving Engine (Fork)',
+    tags: 'C++ / CUDA / PyTorch / PagedAttention',
+    details: [
+      'Performance characterization and kernel tuning for PagedAttention v2 and continuous batching.',
+      'Minimizes memory fragmentation in KV-cache allocation under high concurrent user load.',
+      'Integration benchmarks against heterogeneous model families.'
+    ]
   },
   {
     name: 'flux',
     url: 'https://github.com/Himan-D/flux',
-    desc: 'Low-latency quantitative execution pipeline and institutional financial architecture.',
-    tags: 'Systems / Quantitative Computing'
+    headline: 'Low-Latency Quantitative Execution Pipeline & Infrastructure',
+    tags: 'Systems / Quantitative Finance / Trading',
+    details: [
+      'High-throughput architecture engineered for institutional market micro-structure analysis.',
+      'Zero-allocation data structures and fast serialization for tick-level data processing.',
+      'Deterministic risk evaluation engine executing in sub-millisecond windows.'
+    ]
   },
   {
     name: 'matgraph-cli',
     url: 'https://github.com/Himan-D/matgraph-cli',
-    desc: 'Graph neural network and deep learning toolkit for structure-property prediction in materials informatics.',
-    tags: 'Python / PyTorch Geometric'
+    headline: 'Deep Learning Toolkit for Materials Informatics & Crystal Graphs',
+    tags: 'Python / PyTorch Geometric / Graph Neural Networks',
+    details: [
+      'Equivariant graph neural network primitives designed for crystalline materials property prediction.',
+      'Encodes atomic 3D spatial coordinates and symmetry group operations.',
+      'Command-line tooling for automated featurization and model inference.'
+    ]
   },
   {
     name: 'fingraph',
     url: 'https://github.com/Himan-D/fingraph',
-    desc: 'Financial graph modeling engine for multi-asset correlation structures and dependency propagation.',
-    tags: 'Graph Algorithms / Data Systems'
+    headline: 'Financial Graph Modeling & Systemic Risk Analysis Engine',
+    tags: 'Graph Algorithms / Market Topology',
+    details: [
+      'Constructs dynamic dependency graphs over multi-asset correlation matrices.',
+      'Simulates cascading systemic shocks and liquidity evaporation pathways.',
+      'High-performance graph traversal algorithms for cross-market correlation tracking.'
+    ]
   },
   {
     name: 'apexdrive',
     url: 'https://github.com/Himan-D/apexdrive',
-    desc: 'Deterministic trajectory planner and control framework for robotics and autonomous driving.',
-    tags: 'Robotics / Control Theory'
+    headline: 'Deterministic Robotics Control & Autonomous Drive Trajectory Planner',
+    tags: 'Robotics / Optimal Control / Motion Planning',
+    details: [
+      'Nonlinear model predictive control (NMPC) for trajectory generation under non-holonomic vehicle constraints.',
+      'Smooth spline interpolation adhering to jerk, lateral acceleration, and obstacle clearance limits.'
+    ]
   },
   {
-    name: 'hystersis / hystersis-mcp',
+    name: 'hystersis & hystersis-mcp',
     url: 'https://github.com/Himan-D/hystersis',
-    desc: 'Autonomous agent runtime integrated with Model Context Protocol (MCP) tooling.',
-    tags: 'Agents / MCP / Protocols'
+    headline: 'Autonomous Execution Runtime & Model Context Protocol Server',
+    tags: 'Agents / MCP / Protocols / Developer Tooling',
+    details: [
+      'Standardized Model Context Protocol (MCP) server providing autonomous agents with structured tool access.',
+      'Safe filesystem sandboxing, execution tracing, and rollback capabilities for AI-driven development.'
+    ]
   }
 ];
 ---
 
-<Layout title="Systems & Code | Himanshu Dixit">
+<Layout title="Systems & Open Source | Himanshu Dixit" activeTab="systems">
   <h2>Systems &amp; Open Source Software</h2>
-  <p>Selected open-source engines, toolkits, and infrastructure codebases:</p>
-  
+  <p>
+    An overview of open-source architectures, computational engines, and developer toolkits 
+    designed with an emphasis on determinism, minimal overhead, and verified engineering standards:
+  </p>
+
   {systems.map((s) => (
     <div class="item-block">
-      <div class="item-title"><a href={s.url} target="_blank" rel="noopener noreferrer">{s.name}</a></div>
-      <div class="item-meta">{s.tags}</div>
-      <div class="item-desc">{s.desc}</div>
-      <div class="item-links"><a href={s.url} target="_blank" rel="noopener noreferrer">[Repository]</a></div>
+      <div class="item-header">
+        <span class="item-title"><a href={s.url} target="_blank" rel="noopener noreferrer">{s.name}</a></span>
+        <span class="tag-badge">{s.tags}</span>
+      </div>
+      <div class="item-meta">{s.headline}</div>
+      <ul style="margin-top: 0.4rem; font-size: 0.95rem;">
+        {s.details.map((d) => (
+          <li>{d}</li>
+        ))}
+      </ul>
+      <div class="item-links">
+        <a href={s.url} target="_blank" rel="noopener noreferrer">[GitHub Repository]</a>
+        {s.specUrl && (
+          <a href={s.specUrl} target="_blank" rel="noopener noreferrer">[Architecture Specification]</a>
+        )}
+      </div>
     </div>
   ))}
 </Layout>
