@@ -1,194 +1,70 @@
-# Himan-D
-### Artificial Intelligence Researcher | Applied Topology & Autonomous Systems
+# Himanshu Dixit
 
-> *"Intelligence is the optimal balance between memorizing the past and compressing the future."*
-
----
-> **Status:** Currently scaling a sub-quadratic continuous state-space model across an arbitrary number of interconnected GPUs. Expect severe delays in correspondence due to global gradient synchronization.
----
-
-## Abstract
-
-The current discourse in Artificial Intelligence is highly fractured: autoregressive models scale memorization, while pure reinforcement learning struggles with sample efficiency. My research bridges these domains by framing intelligence through the lens of **Active Inference**, **Geometric Deep Learning**, and **Continuous State-Space Models (SSMs)**.
-
-Let $\mathcal{H}$ be the entropy of the environment and $\mathcal{I}(X; Y)$ be the mutual information between an agent's internal state $X$ and the world state $Y$. I propose that true autonomy emerges when an agent actively minimizes its variational free energy, strictly bounded by the geometry of its environment. 
-
-## Core Research Vectors
-
-- **Geometric Deep Learning:** Exploiting symmetry and invariance (group theory) in neural architectures to learn efficiently from non-Euclidean manifolds. 
-- **Continuous State-Space Models:** Pushing beyond standard attention mechanisms using structured sequence models (e.g., Mamba, S4) for unbounded context horizons.
-- **Active Inference:** Designing agents that don't just passively predict the world, but take actions to minimize the divergence between their predictions and sensory reality.
-- **Applied Coffee Optimization:** Theorem 1 states there exists an optimal learning rate $\eta \in (0, 1]$ such that a model converges precisely when my coffee mug empties. The proof is trivial and left as an exercise to the GPU cluster.
-
-## Methodological Framework: Active Information Foraging
-
-Intelligence fundamentally requires measuring the compatibility between an observation $o_t$ and an internal generative model $P(o, s)$. To minimize surprise, an autonomous agent must optimize its variational free energy $\mathcal{F}$.
-
-Let $Q(s)$ be the approximate posterior of the hidden states. The free energy is bounded by the Kullback-Leibler divergence and the expected log-likelihood:
-
-$$
-\mathcal{F} \triangleq D_{KL}[Q(s) \| P(s)] - \mathbb{E}_{Q} [\ln P(o|s)]
-$$
-
-By treating an action $a$ as an active variable in the generative model, we force the agent to act such that it samples observations confirming its own internal predictions (self-evidencing):
-
-$$
-a^* = \arg\min_a \mathbb{E}_{Q(o|a)} [\mathcal{F}(o, a)]
-$$
-
-*Note: If $\mathcal{F}$ diverges to infinity, it is scientifically customary to blame the batch size.*
-
-<details>
-<summary><b>[Expand] Proof of Asymptotic Global Convergence for Active Inference Policies</b></summary>
-<br>
-
-**Theorem:** Let an autonomous agent be governed by a continuous-time stochastic differential equation (SDE) over a smooth Riemannian manifold $\mathcal{M}$. The policy $\pi^*$ that continuously minimizes the variational free energy $\mathcal{F}$ converges almost surely (a.s.) to the invariant measure of the target generative process, thereby avoiding absorbing bounds (e.g., thermodynamic death).
-
-**Proof:**
-
-Let the internal state dynamics be described by the Itô SDE:
-
-```math
-ds_t = f(s_t, a_t) dt + \Sigma(s_t) dW_t
-```
-
-where $W_t$ is a standard Wiener process and $\Sigma(s_t)$ is the diffusion tensor. The time evolution of the probability density $p(s,t)$ is governed by the Fokker-Planck equation:
-
-```math
-\frac{\partial p}{\partial t} = -\nabla \cdot (f(s,a)p) + \frac{1}{2} \sum_{i,j} \frac{\partial^2}{\partial s_i \partial s_j} (\Sigma \Sigma^T)_{ij} p
-```
-
-The agent's objective is to minimize the expected free energy path integral over an infinite horizon $T \to \infty$. We define the functional $\mathcal{F}$ using the Kullback-Leibler divergence between the variational posterior $Q(s)$ and the true generative model $P(o, s)$:
-
-```math
-\mathcal{F}(\pi) = \mathbb{E}_{Q(o, s | \pi)} \left[ \int_0^\infty e^{-\gamma t} \left( \ln Q(s_t) - \ln P(o_t, s_t) \right) dt \right]
-```
-
-To find the optimal control policy $a_t^* \sim \pi^*$, we invoke the Hamilton-Jacobi-Bellman (HJB) equation. Let $V(s)$ be the optimal value function (the minimum expected free energy from state $s$):
-
-```math
-\gamma V(s) = \min_{a} \left\{ \mathcal{F}(s, a) + \nabla_s V(s)^T f(s,a) + \frac{1}{2} \text{Tr}\left( \Sigma(s)\Sigma(s)^T \nabla_{ss}^2 V(s) \right) \right\}
-```
-
-By taking the functional derivative with respect to the action $a$ and setting it to zero, we isolate the optimal policy:
-
-```math
-\frac{\partial \mathcal{F}}{\partial a} + \left( \frac{\partial f}{\partial a} \right)^T \nabla_s V(s) = 0
-```
-
-To prove global asymptotic stability, we propose $V(s)$ as a candidate Lyapunov function. Since the KL divergence component of $\mathcal{F}$ is strictly positive definite for $Q \neq P$, and $\mathcal{F} = 0 \iff Q = P$, we have $V(s) > 0$ for all states outside the target invariant set. 
-
-Taking the orbital derivative along the system trajectories:
-
-```math
-\dot{V}(s_t) = \nabla_s V^T \dot{s}_t = \nabla_s V^T f(s_t, a^*_t) \leq -\mathcal{F}(s_t, a^*_t) < 0
-```
-
-Because $\dot{V}(s) < 0$ globally, by LaSalle's Invariance Principle, the system trajectories converge almost surely to the largest invariant set where $\dot{V}(s) = 0$, which uniquely corresponds to the exact match between the variational posterior and the true generating process ($Q = P$). 
-
-Thus, the agent perfectly predicts and dictates its environment, securing indefinite survival. $\blacksquare$
-
-</details>
-
-## Selected Preprints & Working Papers
-
-- `[2608.09112]` *Bounding Variational Free Energy in Continuous State-Space Models* (Under Review)
-- `[2511.03450]` *Autoregressive Collapse: Why Next-Token Prediction Cannot Yield General Intelligence*
-- `[2502.11899]` *Non-Euclidean Manifold Traversals in Hierarchical JEPAs*
-
-## Developer Toolkits & Technical Courses
-
-To support my open-source work and fund my compute clusters, I package my internal production tools and deep-dive technical notes into high-value bundles. If you find my research helpful, check them out:
-
-- 🧠 **[Advanced AI Agent Architecture](https://trinetra43.gumroad.com/l/wpzlta):** Learn true LLM orchestration with ReAct loops and state management.
-- 🌐 **[Mastering Distributed Systems in Go](https://trinetra43.gumroad.com/l/ymtzce):** Deep technical dives into Raft, Gossip, and consensus algorithms.
-- ☁️ **[The Production AWS Infrastructure Boilerplate](https://trinetra43.gumroad.com/l/hvkubl):** Production-grade Terraform VPC + EKS boilerplate for rapid deployments.
-- ⚛️ **[The Enterprise Next.js Boilerplate](https://trinetra43.gumroad.com/l/djjju):** Optimized React/Next.js 14 template for quick startup bootstrapping.
-- 🗄️ **[The Data Engineering Airflow Toolkit](https://trinetra43.gumroad.com/l/usihao):** Local Airflow + Postgres Docker setup with production ETL DAGs.
-- 🛡️ **[The Cybersecurity Script Bundle](https://trinetra43.gumroad.com/l/qwkmqq):** Async Python port scanners and web log brute-force analyzers.
-- 🤖 **[The Machine Learning Engineer's Starter Kit](https://trinetra43.gumroad.com/l/hcforq):** PyTorch AMP training and FastAPI inference boilerplate.
-- ⚡ **[The Ultimate Developer Productivity Pack](https://trinetra43.gumroad.com/l/wiuub):** High-efficiency Bash aliases, Git hooks, and CI/CD pipelines.
-
-## Recommended Syllabus
-
-For those seeking to escape the local minima of standard Deep Learning tutorials, I recommend the following foundational texts:
-
-1. **Active Inference:** *The Free-Energy Principle: A Unified Brain Theory?* — Karl Friston (2010)
-2. **Geometric DL:** *Geometric Deep Learning: Grids, Groups, Graphs, Geodesics, and Gauges* — Bronstein et al. (2021)
-3. **State-Space Models:** *Mamba: Linear-Time Sequence Modeling with Selective State Spaces* — Gu & Dao (2023)
-
-## Compute & Infrastructure Toolkit
-
-Scaling these dynamic systems requires a robust engineering foundation to handle high-dimensional manifolds without bottlenecking.
-
-![Research Stack](https://skillicons.dev/icons?i=pytorch,python,cpp,linux,bash,git,docker,aws,gcp,tensorflow,rust,julia&perline=12)
-
-## Selected Insights
-
-> **Lemma 1: The Attention Bottleneck** 
-> Standard self-attention scales at $\mathcal{O}(N^2)$ with respect to sequence length $N$. Without sub-quadratic architectures or continuous state-spaces, attempting infinite-context reasoning is isomorphic to heating the earth.
-
-> **On Neuro-Symbolic Integration:**
-> Deep learning is unparalleled at statistical pattern matching (System 1), but struggles with rigid logical deduction (System 2). The next generation of models must embed symbolic constraints directly into the differentiable loss landscape.
-
-## Secure Communication & Code
-
-- **Professional Network:** [LinkedIn](https://www.linkedin.com/in/him-d/)
-- **Code & Implementations:** See public repositories below.
-
-*Hyper-Optimized Neural SDE Implementation (Variational Free Energy Predictor):*
-```python
-import torch
-import torch.nn as nn
-from torch.nn import functional as F
-from typing import Tuple
-
-@torch.compile(mode="reduce-overhead")
-class NeuralSDEPredictor(nn.Module):
-    """
-    Continuous-time latent state predictor modeling the Itô SDE:
-    d(s_t) = f_θ(s_t, a_t)dt + g_φ(s_t)dW_t
-    
-    Optimized for heavily batched, non-Euclidean manifold traversals via 
-    Lie group regularized integrators. 
-    """
-    def __init__(self, d_model: int = 4096, d_action: int = 1024):
-        super().__init__()
-        # Drift network (f_θ) with SwiGLU activations and RMSNorm
-        self.drift_proj = nn.Linear(d_model + d_action, d_model * 2, bias=False)
-        self.drift_out = nn.Linear(d_model, d_model, bias=False)
-        self.norm = nn.RMSNorm(d_model * 2)
-        
-        # Diffusion network (g_φ) modeling irreducible aleatoric uncertainty
-        self.log_diffusion = nn.Parameter(torch.zeros(d_model))
-        
-        # Spectral normalization to enforce Lipschitz continuity for HJB stability
-        nn.utils.parametrizations.spectral_norm(self.drift_out)
-
-    def drift(self, s_t: torch.Tensor, a_t: torch.Tensor) -> torch.Tensor:
-        """Computes the deterministic drift vector field."""
-        x = torch.cat([s_t, a_t], dim=-1)
-        x = self.norm(self.drift_proj(x))
-        x, gate = x.chunk(2, dim=-1) # SwiGLU gating
-        return self.drift_out(x * F.silu(gate))
-
-    def forward(self, s_t: torch.Tensor, a_t: torch.Tensor, dt: float = 1e-3) -> Tuple[torch.Tensor, torch.Tensor]:
-        """
-        Euler-Maruyama integration step with auxiliary penalty 
-        for variational free energy minimization.
-        """
-        f_t = self.drift(s_t, a_t)
-        g_t = torch.exp(self.log_diffusion)
-        
-        dW = torch.randn_like(s_t) * (dt ** 0.5) # Wiener process increments
-        s_next = s_t + (f_t * dt) + (g_t * dW)
-        
-        # Regularization penalty derived from the Fokker-Planck density evolution
-        penalty = 0.5 * torch.sum(g_t ** 2, dim=-1).mean()
-        return s_next, penalty
-```
+**AI Systems Researcher & Software Engineer**  
+[Email](mailto:himan@trinetralabs.ai) · [GitHub](https://github.com/Himan-D) · [LinkedIn](https://www.linkedin.com/in/him-d/)
 
 ---
-<div align="center">
-  <i>"I spend 90% of my time optimizing loss functions and the other 10% wondering why my gradients exploded."</i>
-</div>
+
+### About
+
+I work on systems and mathematical foundations for autonomous agents, high-throughput machine learning inference, and continuous sequence models. My research focus centers on scalable memory hierarchies for autonomous reasoning, deterministic control trajectories, and the optimization of sequence models beyond quadratic attention.
+
+---
+
+### Research Interests
+
+- **Autonomous Agent Systems:** Long-horizon task planning, hierarchical memory retrieval, and runtime execution environments.
+- **High-Throughput Inference Engines:** Continuous batching, KV-cache management, and kernel optimization for large-scale language and sequence models.
+- **Continuous-Time Sequence Models:** Structured state-space models (SSMs), dynamical systems, and neural differential equations.
+- **Domain Informatics & Systems:** Graph neural networks in materials informatics and low-latency algorithmic pipelines.
+
+---
+
+### Selected Systems & Open Source
+
+- **[agent-memory](https://github.com/Himan-D/agent-memory)**  
+  Hierarchical memory and context recall system for autonomous agent workflows with persistent vector and relational indexing.
+
+- **[deslop](https://github.com/Himan-D/deslop)**  
+  High-performance AST-based codebase inversion and dependency de-looping engine written in Rust. Detects and resolves cyclic dependencies via Feedback Arc Set minimization and interface inversion.
+
+- **[vllm](https://github.com/Himan-D/vllm)** *(Fork / Systems Tuning)*  
+  High-throughput, low-latency LLM serving engine utilizing PagedAttention and continuous batching.
+
+- **[flux](https://github.com/Himan-D/flux)**  
+  Low-latency quantitative execution pipeline and high-frequency trading architecture.
+
+- **[matgraph-cli](https://github.com/Himan-D/matgraph-cli)**  
+  Deep learning and graph neural network toolkit for structure-property prediction in materials informatics.
+
+- **[fingraph](https://github.com/Himan-D/fingraph)**  
+  Financial graph modeling engine for multi-asset correlation structures and dependency propagation.
+
+- **[apexdrive](https://github.com/Himan-D/apexdrive)**  
+  Deterministic robotics control and autonomous drive trajectory planner with geometric constraints.
+
+- **[hystersis](https://github.com/Himan-D/hystersis)** / **[hystersis-mcp](https://github.com/Himan-D/hystersis-mcp)**  
+  Autonomous execution runtime integrated with Model Context Protocol (MCP) tooling.
+
+---
+
+### Selected Technical Reports & Working Papers
+
+- **Hierarchical Memory Persistence and Context Retrieval in Multi-Turn Autonomous Agents**  
+  Himanshu Dixit. *Technical Report*, 2026.  
+  [[Code](https://github.com/Himan-D/agent-memory)]
+
+- **Algorithmic De-looping and Inversion of Cyclic Software Dependency Graphs**  
+  Himanshu Dixit. *Technical Report*, 2026.  
+  [[Code](https://github.com/Himan-D/deslop)]
+
+- **Continuous State-Space Formulations for Sub-Quadratic Sequence Modeling**  
+  Himanshu Dixit. *Working Paper*, 2026.
+
+---
+
+### Contact & Coordinates
+
+- **Email:** [himan@trinetralabs.ai](mailto:himan@trinetralabs.ai)
+- **GitHub:** [github.com/Himan-D](https://github.com/Himan-D)
+- **LinkedIn:** [linkedin.com/in/him-d](https://www.linkedin.com/in/him-d/)
