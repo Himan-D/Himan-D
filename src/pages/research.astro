@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Research | Himanshu Dixit">
+  <h2>Research Vectors</h2>
+  
+  <div class="item-block">
+    <h3>Autonomous Agent Systems &amp; Memory Hierarchies</h3>
+    <p class="item-desc">
+      Standard stateless prompt-response architectures break down during complex, long-horizon tasks.
+      I research and design deterministic execution runtimes, hierarchical memory structures, and
+      context retrieval mechanisms that allow autonomous agents to maintain coherent state across millions
+      of tokens without context rot.
+    </p>
+  </div>
+
+  <div class="item-block">
+    <h3>Inference Systems &amp; Sub-Quadratic Modeling</h3>
+    <p class="item-desc">
+      Transformer self-attention imposes quadratic compute and memory costs with respect to sequence length.
+      My systems work investigates continuous state-space models (SSMs), linear-time sequence operators,
+      and kernel-level inference serving optimizations including continuous batching and efficient KV cache paging.
+    </p>
+  </div>
+
+  <div class="item-block">
+    <h3>Structural Graph Learning &amp; Materials Informatics</h3>
+    <p class="item-desc">
+      Applying geometric deep learning and graph neural networks to physical systems, crystalline structures,
+      and materials property estimation where symmetries and non-Euclidean topologies dictate underlying behavior.
+    </p>
+  </div>
+
+  <div class="item-block">
+    <h3>Codebase Inversion &amp; Architectural Synthesis</h3>
+    <p class="item-desc">
+      Automated methods for extracting Directed Acyclic Graph (DAG) layerings from tangled, circularly-dependent
+      software systems. Using Feedback Arc Set (FAS) analysis, interface inversion, and AST transformations
+      to formalize software architectures into verified specifications.
+    </p>
+  </div>
+</Layout>
