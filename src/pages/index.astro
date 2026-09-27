@@ -4,6 +4,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const featuredReports = [
   {
+    id: 'dixit2026hierarchical',
     title: 'Hierarchical Memory Persistence and Context Retrieval in Multi-Turn Autonomous Agents',
     authors: 'Himanshu Dixit',
     venue: 'Technical Report',
@@ -20,6 +21,7 @@ const featuredReports = [
 }`
   },
   {
+    id: 'dixit2026deslop',
     title: 'Algorithmic De-looping and Inversion of Cyclic Software Dependency Graphs',
     authors: 'Himanshu Dixit',
     venue: 'Technical Report',
@@ -36,20 +38,26 @@ const featuredReports = [
 }`
   },
   {
+    id: 'dixit2026continuous',
     title: 'Continuous State-Space Formulations for Sub-Quadratic Sequence Modeling',
     authors: 'Himanshu Dixit',
     venue: 'Working Paper',
     date: '2026',
     codeUrl: null,
     abstract: 'While self-attention mechanisms offer expressive associative recall, their quadratic compute and memory scaling bottlenecks infinite-context inference. We study continuous-time state-space models discretized via bilinear and zero-order hold transformations, examining their inductive biases when integrated into hierarchical predictive architectures.',
-    bibtex: null
+    bibtex: `@article{dixit2026continuous,
+  title       = {Continuous State-Space Formulations for Sub-Quadratic Sequence Modeling},
+  author      = {Dixit, Himanshu},
+  journal     = {Working Paper},
+  year        = {2026}
+}`
   }
 ];
 ---
 
 <Layout title="Himanshu Dixit | AI Systems Researcher" activeTab="overview">
   <section id="about">
-    <h2>About</h2>
+    <h2>About <a href="#about" class="heading-anchor">#</a></h2>
     <p>
       I am an AI systems researcher and software engineer working at the intersection of 
       <strong>autonomous agent runtimes</strong>, <strong>high-throughput ML inference</strong>, 
@@ -66,7 +74,7 @@ const featuredReports = [
   </section>
 
   <section id="news">
-    <h2>Recent Updates</h2>
+    <h2>Recent Updates <a href="#news" class="heading-anchor">#</a></h2>
     <ul class="timeline-list">
       <li>
         <span class="timeline-date">Sep 2026</span>
@@ -88,7 +96,7 @@ const featuredReports = [
   </section>
 
   <section id="research-focus">
-    <h2>Research Vectors</h2>
+    <h2>Research Vectors <a href="#research-focus" class="heading-anchor">#</a></h2>
     <ul>
       <li>
         <strong>Autonomous Agent Memory Hierarchies:</strong> Designing deterministic runtimes, state persistence mechanisms, and structured retrieval layers that enable agents to execute across million-token horizons without context degradation.
@@ -109,7 +117,7 @@ const featuredReports = [
   </section>
 
   <section id="featured-systems">
-    <h2>Featured Systems &amp; Software</h2>
+    <h2>Featured Systems &amp; Software <a href="#featured-systems" class="heading-anchor">#</a></h2>
     
     <div class="item-block">
       <div class="item-header">
@@ -174,7 +182,7 @@ const featuredReports = [
   </section>
 
   <section id="selected-preprints">
-    <h2>Selected Papers &amp; Technical Reports</h2>
+    <h2>Selected Papers &amp; Technical Reports <a href="#selected-preprints" class="heading-anchor">#</a></h2>
 
     {featuredReports.map((r) => (
       <div class="item-block">
@@ -194,7 +202,13 @@ const featuredReports = [
             <details>
               <summary>[BibTeX]</summary>
               <div class="expanded-box">
-                <pre class="bibtex-code">{r.bibtex}</pre>
+                <pre class="bibtex-code" id={`bib-${r.id}`}>{r.bibtex}</pre>
+                <button 
+                  class="copy-btn" 
+                  onclick={`copyBibtex(this, 'bib-${r.id}')`}
+                >
+                  Copy BibTeX
+                </button>
               </div>
             </details>
           )}
@@ -208,7 +222,7 @@ const featuredReports = [
   </section>
 
   <section id="contact">
-    <h2>Contact &amp; Coordinates</h2>
+    <h2>Contact &amp; Coordinates <a href="#contact" class="heading-anchor">#</a></h2>
     <p>
       I welcome technical correspondence regarding autonomous systems, distributed inference, 
       or mathematical modeling.

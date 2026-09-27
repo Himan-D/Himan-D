@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 
 const publications = [
   {
+    id: 'dixit2026hierarchical',
     title: 'Hierarchical Memory Persistence and Context Retrieval in Multi-Turn Autonomous Agents',
     authors: 'Himanshu Dixit',
     venue: 'Technical Report, Trinetra Labs',
@@ -20,6 +21,7 @@ const publications = [
 }`
   },
   {
+    id: 'dixit2026deslop',
     title: 'Algorithmic De-looping and Inversion of Cyclic Software Dependency Graphs',
     authors: 'Himanshu Dixit',
     venue: 'Technical Report, Trinetra Labs',
@@ -37,6 +39,7 @@ const publications = [
 }`
   },
   {
+    id: 'dixit2026continuous',
     title: 'Continuous State-Space Formulations for Sub-Quadratic Sequence Modeling',
     authors: 'Himanshu Dixit',
     venue: 'Working Paper',
@@ -75,12 +78,20 @@ const publications = [
             {p.abstract}
           </div>
         </details>
-        <details>
-          <summary>[BibTeX]</summary>
-          <div class="expanded-box">
-            <pre class="bibtex-code">{p.bibtex}</pre>
-          </div>
-        </details>
+        {p.bibtex && (
+          <details>
+            <summary>[BibTeX]</summary>
+            <div class="expanded-box">
+              <pre class="bibtex-code" id={`pub-bib-${p.id}`}>{p.bibtex}</pre>
+              <button 
+                class="copy-btn" 
+                onclick={`copyBibtex(this, 'pub-bib-${p.id}')`}
+              >
+                Copy BibTeX
+              </button>
+            </div>
+          </details>
+        )}
       </div>
     </div>
   ))}

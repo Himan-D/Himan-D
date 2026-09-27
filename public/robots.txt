@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://himan-d.github.io/Himan-D/sitemap.xml

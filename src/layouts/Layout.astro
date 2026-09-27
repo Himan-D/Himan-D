@@ -9,11 +9,12 @@ interface Props {
 
 const { 
   title, 
-  description = "Himanshu Dixit — AI Systems Researcher & Software Engineer focusing on autonomous agent architectures and continuous sequence models.",
+  description = "Himanshu Dixit — AI Systems Researcher & Systems Engineer focusing on autonomous agent runtimes, high-throughput inference, and continuous sequence models.",
   activeTab = 'overview'
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://himan-d.github.io').toString();
 ---
 
 <!doctype html>
@@ -23,6 +24,22 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="author" content="Himanshu Dixit" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/262577684?v=4" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/262577684?v=4" />
+
+    <!-- Google Scholar Discovery -->
+    <meta name="citation_author" content="Himanshu Dixit" />
   </head>
   <body>
     <div class="container">
@@ -65,10 +82,21 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       <footer class="footer">
         <hr class="divider" />
-        <p>
-          &copy; {new Date().getFullYear()} Himanshu Dixit.
-        </p>
+        <p>&copy; {new Date().getFullYear()} Himanshu Dixit.</p>
       </footer>
     </div>
+
+    <!-- Minimal progressive copy helper -->
+    <script is:inline>
+      function copyBibtex(btn, codeId) {
+        const el = document.getElementById(codeId);
+        if (!el) return;
+        navigator.clipboard.writeText(el.innerText).then(() => {
+          const orig = btn.innerText;
+          btn.innerText = 'Copied!';
+          setTimeout(() => { btn.innerText = orig; }, 1800);
+        });
+      }
+    </script>
   </body>
 </html>
